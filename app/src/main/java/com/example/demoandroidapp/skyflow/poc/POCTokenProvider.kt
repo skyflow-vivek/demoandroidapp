@@ -7,7 +7,7 @@ import org.json.JSONObject
 
 class POCTokenProvider : Skyflow.TokenProvider {
     override fun getBearerToken(callback: Callback) {
-        val url = "token url"
+        val url = "TOKEN_URL"
         val request = okhttp3.Request.Builder().url(url).build()
         val okHttpClient = OkHttpClient()
         try {
