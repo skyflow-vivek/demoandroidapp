@@ -8,9 +8,10 @@ ext {
     mGroupId = "com.example.demoandroidapp"
     mArtifactId = "demo-android-app"
     mVersionCode = 1
-    mVersionName = "1.1.0"
+    mVersionName = "1.0.0"
 
     mLibraryName = "demo-android-app"
+    mLibraryDescription = "demo android app test package"
 
 }
 
@@ -75,8 +76,32 @@ dependencies {
 def localProperties = new Properties()
 localProperties.load(new FileInputStream(rootProject.file("local.properties")))
 
+
+task androidSourcesJar(type: Jar) {
+    archiveClassifier.set('sources')
+    from android.sourceSets.main.java.srcDirs
+}
+
 afterEvaluate {
     publishing {
+
+        publications {
+            maven(MavenPublication) {
+                groupId mGroupId
+                artifactId mArtifactId
+                version mVersionName
+
+                from components.release
+
+                artifact androidSourcesJar
+
+                pom {
+                    name = mLibraryName
+                    description = mLibraryDescription
+                }
+            }
+        }
+
         repositories {
             maven {
                 name = "GitHubPackages"
