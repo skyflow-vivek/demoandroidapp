@@ -1,5 +1,5 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
     id 'maven-publish'
 }
@@ -8,7 +8,7 @@ ext {
     mGroupId = "com.example.demoandroidapp"
     mArtifactId = "demo-android-app"
     mVersionCode = 1
-    mVersionName = "1.1.0"
+    mVersionName = "1.0.0"
 
     mLibraryName = "demo-android-app"
 
@@ -19,7 +19,6 @@ android {
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.example.demoandroidapp"
         minSdk 21
         targetSdk 32
         versionCode 1
