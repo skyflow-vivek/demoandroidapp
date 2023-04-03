@@ -19,7 +19,7 @@ jobs:
         run: |
           touch local.properties
           echo gpr.user=${{ github.actor }} >> local.properties
-          echo gpr.key=${{ secrets.GITHUB_TOKEN }} >> local.properties
+          echo gpr.key=${{ secrets.PAT_ACTIONS }} >> local.properties
 
       - name: Get Previous tag
         id: previoustag
@@ -48,4 +48,4 @@ jobs:
           ./gradlew publish
         env:
           USERNAME: ${{ github.actor }}
-          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TOKEN: ${{ secrets.PAT_ACTIONS }}
