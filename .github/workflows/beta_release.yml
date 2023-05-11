@@ -18,8 +18,9 @@ jobs:
         run: |
           raw=$(git branch -r --contains ${{ github.ref }})
           branch=${raw##*/}
+          echo "Branch is $branch."
           beta_branch="beta-release/$branch"
-          echo "::set-output name=branch::$beta_branch"
+          echo "::set-output name=branch::$branch"
           echo "Branch is $beta_branch."
 
       - name: Create local properties file
