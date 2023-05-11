@@ -9,7 +9,7 @@ if [ -z $2 ]; then
     echo --------------------------
     echo "Done, Package now at $1"
 else
-    echo "Bumping package version to $1-beta.$2"
+    echo "Bumping package version to $1-dev.$2"
 
     sed -E "s/mVersionName = .+/mVersionName = \"$SEMVER-beta.$2\"/g" app/build.gradle >tempfile && cat tempfile >app/build.gradle && rm -f tempfile
 
