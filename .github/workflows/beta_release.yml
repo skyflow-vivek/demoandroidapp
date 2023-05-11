@@ -3,7 +3,7 @@ name: Public Beta Release
 on:
   push:
     branches:
-      - beta-release/*
+      - beta-release*
 
     tags: "*.*.*-beta.*"
 
