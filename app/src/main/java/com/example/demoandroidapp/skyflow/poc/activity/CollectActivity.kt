@@ -16,6 +16,8 @@ class CollectActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.toolbar)
 
+        // here i have added some new code.
+
     }
 
 }
