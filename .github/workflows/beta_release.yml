@@ -5,18 +5,13 @@ on:
     branches:
       - beta-release*
 
-    tags: "*.*.*-beta.*"
+    create:
+      tags: "*.*.*-beta.*"
 
 jobs:
   build-sdk:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-          ref: main
-          token: ${{ secrets.PAT_ACTIONS }}
-
       - name: Create local properties file
         run: |
           touch local.properties
