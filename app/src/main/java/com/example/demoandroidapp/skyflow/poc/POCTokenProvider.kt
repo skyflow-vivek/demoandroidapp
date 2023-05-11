@@ -27,6 +27,7 @@ class POCTokenProvider : Skyflow.TokenProvider {
             thread.start()
         } catch (exception: Exception) {
             callback.onFailure(exception)
+            // some more code changes 
         }
     }
 }
