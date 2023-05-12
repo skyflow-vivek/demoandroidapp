@@ -94,5 +94,5 @@ class BasicActivity : AppCompatActivity() {
         }
     }
 
-
+    // imagine new function here
 }

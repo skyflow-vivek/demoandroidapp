@@ -20,4 +20,5 @@ private fun getConfiguration(): Skyflow.Configuration {
 fun getSkyFlowClient(): Client {
     val config = getConfiguration()
     return init(config)
+    // changes here as well
 }
