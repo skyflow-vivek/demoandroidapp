@@ -94,5 +94,9 @@ class BasicActivity : AppCompatActivity() {
         }
     }
 
+    private fun random(){
+        println("random function")
+    }
+
     // imagine new function here
 }
