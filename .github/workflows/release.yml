@@ -3,7 +3,7 @@ name: Public Release
 on:
   push:
     tags:
-      - '*.*.*'
+      - '*.*.\d+'
 
 jobs:
   build-sdk:
