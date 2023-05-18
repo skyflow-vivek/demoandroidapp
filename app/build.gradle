@@ -32,6 +32,8 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "SDK_NAME", "\"" + project.ext.mArtifactId + "\"")
+            buildConfigField("String", "SDK_VERSION", "\"" + project.ext.mVersionName + "\"")
         }
     }
     compileOptions {
