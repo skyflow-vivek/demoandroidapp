@@ -32,6 +32,8 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "SDK_NAME", "\"" + project.ext.mArtifactId + "\"")
+            buildConfigField("String", "SDK_VERSION", "\"" + project.ext.mVersionName + "\"")
         }
     }
     compileOptions {
@@ -59,9 +61,6 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
-}
-
-dependencies {
     // define a BOM and its version
     implementation(platform("com.squareup.okhttp3:okhttp-bom:4.10.0"))
 
@@ -76,6 +75,7 @@ dependencies {
 def localProperties = new Properties()
 localProperties.load(new FileInputStream(rootProject.file("local.properties")))
 
+def isBeta = project.hasProperty('beta') ? project.getProperty('beta') : false
 
 task androidSourcesJar(type: Jar) {
     archiveClassifier.set('sources')
@@ -86,18 +86,35 @@ afterEvaluate {
     publishing {
 
         publications {
-            maven(MavenPublication) {
-                groupId mGroupId
-                artifactId mArtifactId
-                version mVersionName
+            if (!isBeta) {
+                maven(MavenPublication) {
+                    groupId mGroupId
+                    artifactId mArtifactId
+                    version mVersionName
 
-                from components.release
+                    from components.release
 
-                artifact androidSourcesJar
+                    artifact androidSourcesJar
 
-                pom {
-                    name = mLibraryName
-                    description = mLibraryDescription
+                    pom {
+                        name = mLibraryName
+                        description = mLibraryDescription
+                    }
+                }
+            } else {
+                mavenBeta(MavenPublication) {
+                    groupId mGroupId
+                    artifactId "$mArtifactId-beta"
+                    version mVersionName
+
+                    from components.release
+
+                    artifact androidSourcesJar
+
+                    pom {
+                        name = mLibraryName
+                        description = mLibraryDescription
+                    }
                 }
             }
         }
