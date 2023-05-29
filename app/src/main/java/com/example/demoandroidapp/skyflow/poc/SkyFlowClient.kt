@@ -7,12 +7,12 @@ import Skyflow.init
 
 private fun getConfiguration(): Skyflow.Configuration {
     return Skyflow.Configuration(
-        vaultID = "VAULT_ID",
-        vaultURL = "VAULT_URL",
+        vaultID = "vaultUrlabc13487dhg56svbcgf7",
+        vaultURL = "https://vault.url.com",
         tokenProvider = POCTokenProvider(),
         options = Skyflow.Options(
-            logLevel = LogLevel.DEBUG,
-            env = Env.DEV
+            logLevel = LogLevel.ERROR,
+            env = Env.PROD
         )
     )
 }
