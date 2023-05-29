@@ -19,7 +19,7 @@ jobs:
           raw=$(git branch -r --contains ${{ github.ref }})
           branch=${raw##*/}
           echo "Branch is $branch."
-          beta_branch="beta-release/$branch"
+          beta_branch="beta/release/$branch"
           echo "::set-output name=branch::$beta_branch"
           echo "Branch is $beta_branch."
 
