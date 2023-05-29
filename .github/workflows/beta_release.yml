@@ -20,7 +20,7 @@ jobs:
           branch=${raw##*/}
           echo "Branch is $branch."
           beta_branch="beta-release/$branch"
-          echo "::set-output name=branch::$branch"
+          echo "::set-output name=branch::$beta_branch"
           echo "Branch is $beta_branch."
 
       - name: Create local properties file
